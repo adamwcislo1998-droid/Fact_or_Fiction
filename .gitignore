@@ -1,0 +1,17 @@
+# Local Python environments contain platform-specific installed packages.
+.venv/
+venv/
+
+# Python bytecode and interpreter caches are generated automatically.
+__pycache__/
+*.py[cod]
+
+# pytest stores local run metadata here.
+.pytest_cache/
+
+# Environment files may contain machine-specific or private settings.
+.env
+
+# Operating-system file-browser metadata is not part of the project.
+.DS_Store
+Thumbs.db
