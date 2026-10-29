@@ -1,0 +1,18 @@
+FACT OR FICTION — COMMENTED CODE VERIFICATION
+
+The executable logic and configuration were preserved while explanatory comments
+were added.
+
+Checks completed during packaging:
+- Python abstract syntax/logic matched the original after comments/docstrings were removed.
+- JavaScript logic matched the original after explanatory comment lines were removed.
+- Executable manifest.json, package.json and sample_payload.json data matched the original.
+- HTML markup, CSS rules, dependency specifications and setup commands matched the original.
+- All Python files passed syntax compilation.
+- Reddit JavaScript parser tests passed: 2 passed, 0 failed.
+- Executable JSON files parsed successfully.
+- Unix shell scripts passed sh syntax validation.
+
+The complete Python pytest suite was not executed in the packaging environment
+because Flask and vaderSentiment were not installed there. After running the
+provided setup script, it can be checked with: cd backend && pytest -q

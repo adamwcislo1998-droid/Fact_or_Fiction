@@ -1,0 +1,21 @@
+{
+  "url": "https://www.reddit.com/r/example/comments/example/example_post/",
+  "title": "A cautious example claim with linked data",
+  "body": "According to the published report, the estimate may change as more data becomes available. Source: https://example.org/report",
+  "comments": [
+    {
+      "text": "The methodology is described in the linked report.",
+      "score": 12,
+      "depth": 0
+    },
+    {
+      "text": "Do you have another source for this claim?",
+      "score": 4,
+      "depth": 0
+    }
+  ],
+  "extraction": {
+    "method": "sample",
+    "commentsCaptured": 2
+  }
+}

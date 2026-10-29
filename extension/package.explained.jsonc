@@ -1,0 +1,15 @@
+// EXPLANATORY COPY ONLY: JSONC supports comments; the matching .json file
+// remains the executable/valid file used by Chrome, Node or Flask.
+
+{
+  // Local package identifier used only for the JavaScript test setup.
+  "name": "fact-or-fiction-extension-tests",
+  // Prevents accidental publication to the public npm registry.
+  "private": true,
+  // Treat .js files as ES modules so import/export syntax works.
+  "type": "module",
+  // npm test invokes Node's built-in test runner; no dependencies are needed.
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}

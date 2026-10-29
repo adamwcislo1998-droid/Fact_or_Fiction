@@ -1,0 +1,48 @@
+// EXPLANATORY COPY ONLY: JSONC supports comments; the matching .json file
+// remains the executable/valid file used by Chrome, Node or Flask.
+
+{
+  // Manifest V3 uses a service worker rather than a persistent background page.
+  "manifest_version": 3,
+  // Human-readable name shown in the extensions page and toolbar.
+  "name": "Fact or Fiction: Credibility Lens",
+  // Extension release version; must use Chrome-compatible numeric segments.
+  "version": "1.0.0",
+  // Short explanation visible in browser extension management.
+  "description": "Explains credibility-related language, source and discussion signals on Reddit posts.",
+  // activeTab permits user-triggered access; storage saves the latest result.
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  // Allowed Reddit and localhost origins for extraction/backend requests.
+  "host_permissions": [
+    "https://www.reddit.com/*",
+    "https://old.reddit.com/*",
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*"
+  ],
+  // Declares the module-type Manifest V3 service worker.
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  // Defines the toolbar popup document and accessible title.
+  "action": {
+    "default_title": "Fact or Fiction",
+    "default_popup": "popup/popup.html"
+  },
+  // Injects the DOM fallback only on supported Reddit pages after load.
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.reddit.com/*",
+        "https://old.reddit.com/*"
+      ],
+      "js": [
+        "content/contentScript.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

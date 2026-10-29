@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Popup document for the extension toolbar interface. -->
+<html lang="en">
+  <head>
+    <!-- Metadata makes the fixed-width popup render consistently and loads its
+         local stylesheet; no external scripts or fonts are required. -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fact or Fiction</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- All interactive content is contained in one semantic main element. -->
+    <main class="shell">
+      <!-- Product identity and a careful description that avoids claiming fact checking. -->
+      <header class="header">
+        <p class="eyebrow">Credibility Lens</p>
+        <h1>Fact or Fiction</h1>
+        <p class="intro">Review language, sourcing and discussion signals on the open Reddit post.</p>
+      </header>
+
+      <!-- aria-live politely announces backend-status changes to screen readers. -->
+      <section class="backend-row" aria-live="polite">
+        <span id="backendDot" class="status-dot status-dot--pending"></span>
+        <span id="backendStatus">Checking local backend</span>
+      </section>
+
+      <!-- popup.js binds the primary user action to this stable element ID. -->
+      <button id="analyseBtn" class="primary-button" type="button">Analyse current post</button>
+      <p id="status" class="status-text" aria-live="polite"></p>
+
+      <!-- Hidden until a successful response is rendered. -->
+      <section id="resultPanel" class="result-panel" hidden>
+        <!-- Primary score, cautious label and amount-of-information confidence. -->
+        <div class="score-header">
+          <div>
+            <p class="section-label">Signal score</p>
+            <p id="scoreValue" class="score-value">0</p>
+          </div>
+          <div>
+            <p id="scoreLabel" class="score-label"></p>
+            <p id="confidenceLabel" class="confidence-label"></p>
+          </div>
+        </div>
+        <!-- Decorative continuum; popup.js positions the marker from 0 to 100. -->
+        <div class="score-track" aria-hidden="true">
+          <div id="scoreMarker" class="score-marker"></div>
+        </div>
+
+        <p id="summary" class="summary"></p>
+
+        <!-- Compact diagnostics show how much and how the page was captured. -->
+        <div class="capture-grid">
+          <div><span id="commentCount">0</span><small>comments captured</small></div>
+          <div><span id="linkCount">0</span><small>post links</small></div>
+          <div><span id="extractionMethod">unknown</span><small>capture method</small></div>
+        </div>
+
+        <!-- The six strongest non-zero scoring contributions are inserted here. -->
+        <h2>Strongest indicators</h2>
+        <div id="indicatorList" class="indicator-list"></div>
+
+        <!-- Native details/summary provides accessible expandable limitations. -->
+        <details>
+          <summary>Important limitations</summary>
+          <ul id="limitationsList"></ul>
+        </details>
+      </section>
+
+      <p class="disclaimer">This prototype does not verify whether a claim is true. It explains signals that may help a reader decide what to check next.</p>
+    </main>
+    <!-- ES module controller runs after the HTML above has been parsed. -->
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

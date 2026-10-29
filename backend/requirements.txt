@@ -1,0 +1,8 @@
+# Flask provides the local HTTP API used by the browser extension.
+Flask>=3.0,<4
+# Adds Cross-Origin Resource Sharing headers for extension-to-localhost requests.
+flask-cors>=4.0,<7
+# Lightweight rule/lexicon sentiment analysis used for emotional-intensity signals.
+vaderSentiment==3.3.2
+# Development dependency used by the included backend test suite.
+pytest>=8,<10

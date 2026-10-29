@@ -1,0 +1,6 @@
+# Include every lightweight/default dependency first.
+-r requirements.txt
+# Optional zero-shot classification API and model-loading utilities.
+transformers>=4.40,<5
+# Tensor library required to execute the optional transformer model.
+torch>=2.2
